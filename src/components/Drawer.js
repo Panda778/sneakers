@@ -1,10 +1,12 @@
 
 
-const Drawer = ()=>{
+const Drawer = ({onclick})=>{
+
+
     return(
-        <div style={{display: 'none'}} className={'overlay'}>
+        <div  className={'overlay'}>
             <div className="drawer">
-                <h2 className={'mb-30 d-flex justify-between '}>Корзина <img className={'cu-p removeBtn'}
+                <h2 className={'mb-30 d-flex justify-between '}>Корзина <img onClick={onclick} className={'cu-p removeBtn'}
                                                                              src="/img/btn-remove.svg" alt=""/></h2>
 
                 <div className={'items flex'}>
@@ -16,6 +18,7 @@ const Drawer = ()=>{
                             <p className={'mb-5'}>Мужские Кроссовки Nike Blazer Mid Suede</p>
                             <b>12 990</b>
                         </div>
+                        
                         <img className={'removeBtn'} src="/img/btn-remove.svg" alt=""/>
                     </div>
                     <div className="cartItem d-flex align-center mb-20">

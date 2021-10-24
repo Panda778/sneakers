@@ -8,7 +8,7 @@ const Card = ({title, price, imgUrl}) => {
     const handleChange = () => {
         setIsAdded(!isAdded)
     }
-    console.log(isAdded)
+
 
     return (
         <div className={styles.card}>
@@ -23,8 +23,8 @@ const Card = ({title, price, imgUrl}) => {
                     <b>{price}</b>
                 </div>
 
-                <img className={styles.plus} onClick={handleChange}
-                     src={isAdded == false ? './img/plus.svg' : './img/check-mark.svg'} alt=""/>
+                <img className={isAdded === false?  `${styles.plus}`:`${styles.checked}`} onClick={handleChange}
+                     src={isAdded === false ?'./img/plus.svg' :'./img/check-mark.png' } alt=""/>
 
             </div>
         </div>

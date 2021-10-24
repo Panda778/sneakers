@@ -2,61 +2,54 @@ import './App.css';
 import Card from "./components/Card/Card";
 import Header from "./components/Header";
 import Drawer from "./components/Drawer";
+import {useEffect, useState} from "react";
 
 
-const arr = [
-    {
-        title: 'Мужские Кроссовки Nike Blazer Mid Suede',
-        price: 12990,
-        imgUrl: '/img/sneakers/1.jpg',
-        id: 1
-    },
-    {
-        title: 'Мужские Кроссовки Nike Air Max 270',
-        price: 17490,
-        imgUrl: '/img/sneakers/2.jpg',
-        id: 2
-    },
-    {
-        title: 'Мужские Кроссовки Nike Blazer Mid Suede',
-        price: 14000,
-        imgUrl: '/img/sneakers/3.jpg',
-        id: 3
-    },
-    {
-        title: 'Кроссовки Puma X Aka Boku Future Raider',
-        price: 32220,
-        imgUrl: '/img/sneakers/4.jpg',
-        id: 4
-    }
-]
 function App() {
+
+
+    const [items, setItems] = useState([])
+    const [cartOpen, setCartOpen] = useState(false)
+    const visible = () => {
+        setCartOpen(!cartOpen)
+    }
+
+
+    useEffect(() => {
+        fetch('https://617500c408834f0017c70aba.mockapi.io/items').then((response) => {
+            return response.json()
+        }).then(json => {
+            setItems(json)
+        })
+
+    }, [])
 
     return (
         <div className="wrapper clear">
 
-          <Drawer/>
+            {cartOpen && <Drawer onclick={visible}/>}
 
-      <Header/>
+            <Header onclick={visible}/>
 
             <div className="content p-40">
                 <div className={'d-flex align-center justify-between mb-40'}>
                     <h1>Все кроссовки</h1>
+
                     <div className={'search-block'}>
                         <img src="/img/search.svg" alt="search"/>
                         <input type="text" placeholder={'Поиск...'}/>
                     </div>
                 </div>
 
-                <div className="d-flex">
-                    {arr.map((item)=>
+                <div className="d-flex flex-wrap">
+                    {items.map((item, index) =>
                         <Card
                             key={item.id}
-                        title={item.title}
-                        price={item.price}
-                        imgUrl={item.imgUrl}
+                            title={item.title}
+                            price={item.price}
+                            imgUrl={item.imgUrl}
 
-                    />)}
+                        />)}
                 </div>
 
             </div>
