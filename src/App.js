@@ -3,6 +3,7 @@ import Card from "./components/Card/Card";
 import Header from "./components/Header";
 import Drawer from "./components/Drawer";
 import {useEffect, useState} from "react";
+import {logDOM} from "@testing-library/react";
 
 
 function App() {
@@ -61,6 +62,7 @@ function App() {
                             imgUrl={item.imgUrl}
                             onFavorite={() => console.log('favorite')}
                             onPlus={(obj) => onAddToCart(obj)}
+                            onchange={()=> console.log('fe')}
                         />)}
                 </div>
 
