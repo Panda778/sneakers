@@ -48,6 +48,7 @@ function App() {
                     <div className={'search-block'}>
                         <img src="/img/search.svg" alt="search"/>
                         <input onChange={onChangeSearchInput} value={searchValue} type="text" placeholder={'Поиск...'}/>
+                        <img width={20} height={20}  onClick={()=>setSearchValue('')}  className={'removeBtn pt-5'} src="/img/btn-remove.svg" alt=""/>
                     </div>
                 </div>
 
